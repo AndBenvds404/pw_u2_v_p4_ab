@@ -2,17 +2,19 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <Contador titulo ="Estudiante"/>
   <Contador titulo="profesor"/>
+  <Calculadora></Calculadora>
   
  
 </template>
 
 <script>
 import Contador from '../src/components/Contador.vue'
-
+import Calculadora from './components/Calculadora.vue';
 export default {
   name: 'App',
   components: {
-    Contador
+    Contador,
+    Calculadora
     
   }
 }

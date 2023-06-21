@@ -2,7 +2,7 @@
     <h3>{{ titulo }}</h3>
     <h3>{{ tituloComponente }}</h3>
     <p>{{ numero }}  <sup>2</sup>={{ otenerCuadradoComputado }}</p>
-    <p>{{ numero }}  <sup>2</sup>={{ otenerCuadradoComputado }}</p>
+    <p>{{ numero }}  <sup>2</sup>={{ otenerCuadradoComputado}}</p>
     
     
     
