@@ -1,12 +1,12 @@
 <template>
     <h3>{{ titulo }}</h3>
-    <h3>{{ tituloComponente }}</h3>
+    <h3>{{porDefecto}}</h3>
     <p>{{ numero }}  <sup>2</sup>={{ otenerCuadradoComputado }}</p>
-    <p>{{ numero }}  <sup>2</sup>={{ otenerCuadradoComputado }}</p>
+    <p>{{ inicio }}  <sup>2</sup>={{ otenerCuadradoComputado }}</p>
     
     
     
-    <button v-on:click="aumentar">+</button>
+    <button @click="aumentar">+</button>
     <button v-on:click="disminuir">-</button>
     
   </template>
@@ -37,7 +37,9 @@
             
             disminuir(){
                 return this.numero--
-            }
+            },
+
+           
     },
 
     
@@ -46,10 +48,23 @@
         otenerCuadradoComputado(){
             console.log('entro al metodo otener Cuadrado Computado')
                 return this.numero *this.numero;
-        }
+        },
+        porDefecto(){
+                return this.tituloComponente || 'valor defecto';
+            }
     },
 
-    props:['titulo','valor2']
+    props:{
+        titulo: String,
+        inicio: {
+            type: Number,
+            requiered: false,
+            default: 50,
+            validator(value){
+                return value > 100
+            }
+        }
+    }
 
 
 
@@ -57,8 +72,10 @@
   };
   </script>
   
-  <style>
 
+
+
+  <style>
 
 button{
     margin: 10px;
