@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import Contador from '../src/components/Contador.vue'
+//import Contador from '../src/components/Contador.vue'
 import CaracolaMagica from './components/CaracolaMagica.vue';
 
 export default {
   name: 'App',
   components: {
-    Contador,
+//    Contador,
     CaracolaMagica
     
   }
