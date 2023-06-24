@@ -1,11 +1,13 @@
 <template>
   <h1>CARACOLA MÁGICA</h1>
   
-  <div class="sombreadoImg">
-    <img  v-if="urlImg"  v-bind:src="urlImg"  alt="No se puede presentar">
-  </div>
   
+    <img  v-if="urlImg"  v-bind:src="urlImg"  alt="No se puede presentar">
+    <div class="sombreadoImg"></div>
 
+    <p v-if="win" class="winer">YOU WIN </p>
+  
+    
     <br>
     <div class="contenedor">
         <input v-model="pregunta" type="text" placeholder="ajme una pregunta manito">
@@ -28,7 +30,9 @@ export default {
         return{
             pregunta: 'Hola Mundo',
             respuesta: '',
-            urlImg: null
+            urlImg: null,
+            win: false,
+            countWin: 0
         }
     },
 
@@ -40,16 +44,36 @@ export default {
             const{answer, image} = respuesta
             this.respuesta=answer
             this.urlImg=image
+            this.verificarYesNo(answer)
+
+        },
+
+
+        verificarYesNo(answer){
+            if(answer.toLowerCase()=="yes"){
+                this.countWin++
+                if(this.countWin==2){
+                    
+                    this.win=true;
+                    this.countWin=0;
+                }
+                    
+            }else{
+                this.countWin=0;
+                this.win=false;
+            }
+            
 
         }
+
+
     },
 
     watch:{
         pregunta(value, oldValue){
-                console.log('value: '+ value)
-                console.log('oldValue: '+oldValue)
+                
                 if(value.includes('?') ){
-                    console.log('consumir el API')
+                  
                     this.consumirApi()
                     
                 }
@@ -74,7 +98,7 @@ img, .sombreadoImg {
 }
 
 .sombreadoImg{
-    background-color: rgba(rgb(19, 2, 2), rgb(104, 95, 95), rgb(31, 29, 29), 4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .contenedor{
@@ -91,6 +115,15 @@ input{
 
 p, h1, h2 {
     color: antiquewhite;
+}
+.winer{
+    margin: 0;
+    position: relative;
+    display: block;
+    color: aqua;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 170px;
+    text-shadow: 1px 1px  17px rgb(212, 226, 14);
 }
 
 h2  {
