@@ -1,9 +1,9 @@
 <template>
   <h1>CARACOLA MÁGICA</h1>
-  
-  <div class="sombreadoImg">
+
+   
     <img  v-if="urlImg"  v-bind:src="urlImg"  alt="No se puede presentar">
-  </div>
+    <div class="sombreadoImg"> </div>
   
 
     <br>
@@ -36,7 +36,6 @@ export default {
 
         async consumirApi(){
             const respuesta = await fetch('https://yesno.wtf/api').then(r=>r.json())
-            console.log(respuesta )
             const{answer, image} = respuesta
             this.respuesta=answer
             this.urlImg=image
@@ -48,9 +47,12 @@ export default {
         pregunta(value, oldValue){
                 console.log('value: '+ value)
                 console.log('oldValue: '+oldValue)
+
                 if(value.includes('?') ){
                     console.log('consumir el API')
+                    this.respuesta = 'pensado...'
                     this.consumirApi()
+                    this.pregunta = ''
                     
                 }
         }        
@@ -74,11 +76,12 @@ img, .sombreadoImg {
 }
 
 .sombreadoImg{
-    background-color: rgba(rgb(19, 2, 2), rgb(104, 95, 95), rgb(31, 29, 29), 4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .contenedor{
     position: relative;
+    justify-content: center;
 }
 input{
     width: 250px;
