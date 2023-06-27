@@ -6,6 +6,7 @@
     <div class="sombreadoImg"></div>
 
     <p v-if="win" class="winer">YOU WIN </p>
+    <p  v-bind:class="getstile()">{{intentando}} </p>
   
     
     <br>
@@ -28,15 +29,30 @@ export default {
 
     data(){
         return{
-            pregunta: 'Hola Mundo',
+            pregunta: '',
             respuesta: '',
             urlImg: null,
             win: false,
-            countWin: 0
+            countWin: 0,
+            intentando: ''
+
         }
     },
 
     methods:{
+
+        getstile(){
+        
+                if(this.win){
+                    console.log("if: "+ this.win)
+                    return 'stile2'
+                }else{
+                    console.log("else: "+ this.win)
+                    return 'stile1'
+                }
+    
+
+        },
 
         async consumirApi(){
             const respuesta = await fetch('https://yesno.wtf/api').then(r=>r.json())
@@ -52,8 +68,12 @@ export default {
         verificarYesNo(answer){
             if(answer.toLowerCase()=="yes"){
                 this.countWin++
-                if(this.countWin==2){
-                    
+                this.win=true
+                this.getstile()
+                this.intentando='una más !'
+                
+                if(this.countWin==3){
+                    this.intentando=''
                     this.win=true;
                     this.countWin=0;
                 }
@@ -61,6 +81,8 @@ export default {
             }else{
                 this.countWin=0;
                 this.win=false;
+                this.getstile()
+                this.intentando = "Sigue Intentando !"
             }
             
 
@@ -95,6 +117,26 @@ img, .sombreadoImg {
     position: fixed;
     top: 0px;
 
+}
+
+.stile1{
+    margin: 0;
+    position: relative;
+    display: block;
+    color:rgb(139, 0, 0);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 170px;
+    text-shadow: 1px 1px  17px rgb(212, 226, 14);
+}
+
+.stile2{
+    margin: 0;
+    position: relative;
+    display: block;
+    color: blueviolet;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 170px;
+    text-shadow: 1px 1px  17px rgb(212, 226, 14);
 }
 
 .sombreadoImg{
