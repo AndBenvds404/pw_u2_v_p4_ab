@@ -1,8 +1,8 @@
 <template>
   
   <h1>Juego Pokemon</h1>
-  <PokemonImg/>
-  <PokemonOps/>
+  <PokemonImg :pokemonid="69" :muestraPokemon="false"/>
+   <PokemonOps/>
 </template>
 
 <script>
@@ -21,5 +21,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>
