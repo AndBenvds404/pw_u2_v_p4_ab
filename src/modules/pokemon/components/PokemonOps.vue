@@ -2,10 +2,13 @@
   
   <div class="contenedorOpciones">
     <ul>
-        <li>p1</li>
+        <!--
+            <li>p1</li>
         <li>p2</li>
         <li>p3</li>
         <li>p4</li>
+        -->
+        <li v-for="pokemon in opciones" :key="pokemon.id">{{ pokemon.nombre }}</li>
     </ul>
 
   </div>
@@ -14,6 +17,13 @@
 
 <script>
 export default {
+
+    props:{
+        opciones:{
+            type: Array,
+            required: true
+        }
+    }
 
 }
 </script>
@@ -29,8 +39,10 @@ li{
     border-radius: 4px;
     background-color: white;
     margin-bottom: 10px;
+    height: 30px;
     width: 200px;
     cursor: pointer;
+    
        
 }
 
