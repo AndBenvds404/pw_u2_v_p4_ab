@@ -1,6 +1,13 @@
 <template>
   <h1>CARACOLA MÁGICA</h1>
+<<<<<<< HEAD
   
+=======
+
+   
+    <img  v-if="urlImg"  v-bind:src="urlImg"  alt="No se puede presentar">
+    <div class="sombreadoImg"> </div>
+>>>>>>> a418f5519082d531e1925841be1314dc726d75ce
   
     <img  v-if="urlImg"  v-bind:src="urlImg"  alt="No se puede presentar">
     <div class="sombreadoImg"></div>
@@ -56,7 +63,6 @@ export default {
 
         async consumirApi(){
             const respuesta = await fetch('https://yesno.wtf/api').then(r=>r.json())
-            console.log(respuesta )
             const{answer, image} = respuesta
             this.respuesta=answer
             this.urlImg=image
@@ -93,10 +99,20 @@ export default {
 
     watch:{
         pregunta(value, oldValue){
+<<<<<<< HEAD
                 
                 if(value.includes('?') ){
                   
+=======
+                console.log('value: '+ value)
+                console.log('oldValue: '+oldValue)
+
+                if(value.includes('?') ){
+                    console.log('consumir el API')
+                    this.respuesta = 'pensado...'
+>>>>>>> a418f5519082d531e1925841be1314dc726d75ce
                     this.consumirApi()
+                    this.pregunta = ''
                     
                 }
         }        
@@ -140,11 +156,16 @@ img, .sombreadoImg {
 }
 
 .sombreadoImg{
+<<<<<<< HEAD
     background-color: rgba(0, 0, 0, 0.4);
+=======
+    background-color: rgba(0, 0, 0, 0.5);
+>>>>>>> a418f5519082d531e1925841be1314dc726d75ce
 }
 
 .contenedor{
     position: relative;
+    justify-content: center;
 }
 input{
     width: 250px;
