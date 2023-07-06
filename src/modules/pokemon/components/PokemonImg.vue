@@ -53,13 +53,15 @@ export default {
 img{
   position: absolute;
   height: 200px;
-  right: 41%;
+  width: 400px;
+  right: 37%;
 }
   
 .contenedorImg{
 
-  display: flex;
+ 
   justify-items: center;
+  text-align: center;
   height: 200px;
 
 }

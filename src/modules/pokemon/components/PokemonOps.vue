@@ -16,7 +16,7 @@
 </template>
 
 <script>
-export default {
+    export default {
 
     props:{
         opciones:{
@@ -38,6 +38,7 @@ export default {
 
 ul{
     list-style-type: none;
+    margin-right: 30px;
 }
 
 li{
@@ -59,6 +60,7 @@ li:hover{
 .contenedorOpciones{
     display: flex;
     justify-content: center;
+    align-content: center   ;
 }
 
 </style>

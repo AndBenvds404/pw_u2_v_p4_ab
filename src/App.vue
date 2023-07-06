@@ -1,6 +1,6 @@
 <template>
   
-  <PokemonPage></PokemonPage>
+  <PokemonPage class="juego"></PokemonPage>
  
 </template>
 
@@ -27,5 +27,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  justify-content: left;
+  
 }
+
+
 </style>
