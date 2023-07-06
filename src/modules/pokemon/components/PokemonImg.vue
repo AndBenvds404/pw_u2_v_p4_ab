@@ -58,7 +58,8 @@ img{
   
 .contenedorImg{
 
-
+  display: flex;
+  justify-items: center;
   height: 200px;
 
 }

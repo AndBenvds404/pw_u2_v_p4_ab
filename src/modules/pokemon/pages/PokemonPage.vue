@@ -1,8 +1,16 @@
 <template>
   
-  <h1>Juego Pokemon</h1>
-  <PokemonImg :pokemonid="69" :muestraPokemon="false"/>
-   <PokemonOps :opciones="arreglo" />
+  <h1 v-if="!pokemonCorrecto"> Espere por favor .... </h1>
+    <div v-else>  <!--siempre debe posicionarse debajo de una directiva V-IF-->
+        <h1>Juego Pokemon</h1>
+        <PokemonImg  :pokemonid="pokemonCorrecto.id" :muestraPokemon="showPokemon"/>
+        <PokemonOps :opciones="pokeArreglo"  @seleccionado="revisarSeleccion($event)" />
+        
+    </div>
+    <h1 v-if="mensajeWin"> Ganaste !!</h1>
+        <h1 v-if="mensajelose"> Perdiste :c</h1>
+
+  
 </template>
 
 <script>
@@ -15,7 +23,12 @@ export default {
 
     data(){
           return{
-            arreglo:[]
+            pokeArreglo:[],
+            pokemonCorrecto : null,
+            showPokemon: false,
+            mensajeWin:false,
+            mensajelose:false
+
           }      
     },
 
@@ -25,8 +38,25 @@ export default {
     },
     methods:{
         async cargaJuegoInicial(){
-            this.arreglo = await obtenerFachadaPokemons()
-            console.log(this.arreglo)
+            const arreglo = await obtenerFachadaPokemons()
+            console.log(this.pokeArreglo)
+            this.pokeArreglo = arreglo
+            
+            const indicePokemon = Math.floor(Math.random()*4)
+            this.pokemonCorrecto = this.pokeArreglo[indicePokemon]
+        },
+
+        revisarSeleccion(idSeleccionado){
+            console.log('evento en el padre')
+            
+            if(idSeleccionado ==this.pokemonCorrecto.id){
+                this.showPokemon = true
+                this.mensajeWin=true
+                this.mensajelose= false
+            }
+            this.mensajelose=true
+            
+            
         }
     },
 
