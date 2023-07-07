@@ -53,8 +53,11 @@ export default {
                 this.showPokemon = true
                 this.mensajeWin=true
                 this.mensajelose= false
+            }else{
+                this.mensajelose=true
+            this.mensajeWin=false
             }
-            this.mensajelose=true
+            
             
             
         }
