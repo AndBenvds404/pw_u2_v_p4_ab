@@ -1,3 +1,18 @@
 html body{
-    background-color: rgb(253, 194, 172);
+    
+}
+
+h1, h2{
+    font-weight: bold;
+    color: yellow;
+    font-size: 80px;
+    -webkit-text-stroke: 3px blue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 1px;
+    margin-bottom: 40px;
+ 
+}
+
+div{
+    padding: 0 30px;
 }

@@ -1,14 +1,14 @@
 <template>
   
   <div class="contenedorOpciones">
-    <ul>
+    <ul class="opciones">
         <!--
             <li>p1</li>
         <li>p2</li>
         <li>p3</li>
         <li>p4</li>
         -->
-        <li v-for="pokemon in opciones" :key="pokemon.id" @click="$emit('seleccionado',pokemon.id)">{{ pokemon.nombre }}</li>
+        <li  class="opcion" v-for="pokemon in opciones" :key="pokemon.id" @click="$emit('seleccionado',pokemon.id)">{{ pokemon.nombre }}</li>
     </ul>
 
   </div>
@@ -34,13 +34,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-ul{
+.opciones{
     list-style-type: none;
 }
 
-li{
+.opcion{
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 4px;
     background-color: white;
@@ -52,7 +52,7 @@ li{
        
 }
 
-li:hover{
+.opcion:hover{
     background-color: cornflowerblue;
 }
 
